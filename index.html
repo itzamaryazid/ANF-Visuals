@@ -27,6 +27,7 @@ body{
 a{color:inherit;text-decoration:none}
 .container{max-width:1100px;margin:auto;padding:28px}
 
+/* HEADER */
 header{
   display:flex;
   justify-content:space-between;
@@ -43,8 +44,7 @@ header{
   border:1px solid rgba(0,0,0,.12);
 }
 
-.brand-badge img{height:36px}
-
+/* NAV */
 nav a{
   margin-left:20px;
   font-size:14px;
@@ -56,6 +56,7 @@ nav a.active{color:var(--text)}
 section.page{display:none}
 section.page.active{display:block}
 
+/* HERO */
 .hero{
   display:grid;
   grid-template-columns:1.2fr .8fr;
@@ -79,6 +80,7 @@ h1{font-size:44px;margin:0 0 16px}
   color:#f5f3ef;
 }
 
+/* CARDS */
 .card{
   background:linear-gradient(180deg,#191915,var(--panel));
   border:1px solid var(--line);
@@ -133,8 +135,39 @@ footer{
 
 <header>
   <div class="brand-badge">
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAksAAAJLCAIAAAB430VVAADj20lEQVR4nOz9d7wlV3nnC/+etVZV7XTO6dythCJJICEhlEACCSTC..." alt="ANF Visuals logo">
+    <!-- INLINE SVG LOGO (GitHub-safe) -->
+    <svg
+      width="180"
+      height="36"
+      viewBox="0 0 900 180"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="ANF Visuals logo"
+    >
+      <rect x="0" y="0" width="900" height="180" rx="28" fill="#f2eee6"/>
+      <text
+        x="40"
+        y="118"
+        font-size="110"
+        font-weight="800"
+        fill="#1a1a17"
+        style="letter-spacing:6px"
+        font-family="Inter, Arial, sans-serif"
+      >
+        ANF
+      </text>
+      <text
+        x="380"
+        y="118"
+        font-size="92"
+        font-weight="500"
+        fill="#1a1a17"
+        font-family="Georgia, 'Times New Roman', serif"
+      >
+        Visuals
+      </text>
+    </svg>
   </div>
+
   <nav>
     <a href="#home" data-page="home">Home</a>
     <a href="#services" data-page="services">Services</a>
@@ -143,6 +176,7 @@ footer{
   </nav>
 </header>
 
+<!-- HOME -->
 <section id="home" class="page active">
   <div class="hero">
     <div>
@@ -157,6 +191,7 @@ footer{
         <a href="https://wa.me/447376357850" target="_blank">WhatsApp us</a>
       </div>
     </div>
+
     <div class="card">
       <div class="label">Our approach</div>
       <p><b>End-to-end production</b><br>Concept, filming, editing, delivery.</p>
@@ -166,6 +201,7 @@ footer{
   </div>
 </section>
 
+<!-- SERVICES -->
 <section id="services" class="page">
   <div class="label">Services</div>
   <div class="grid">
@@ -175,6 +211,7 @@ footer{
   </div>
 </section>
 
+<!-- PRICING -->
 <section id="pricing" class="page">
   <div class="label">Pricing & Offer</div>
   <div class="grid">
@@ -203,6 +240,7 @@ footer{
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact" class="page">
   <div class="label">Contact</div>
   <div class="card">
@@ -239,3 +277,4 @@ showPage(location.hash.replace("#","") || "home");
 
 </body>
 </html>
+
