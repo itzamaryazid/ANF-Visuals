@@ -169,6 +169,49 @@ footer{
   transform: translateY(-1px);
   box-shadow: 0 10px 22px rgba(0,0,0,0.3);
 }
+/* Make whole pricing cards clickable without changing the look */
+.card-link{display:block}
+
+/* Request form styling (matches existing theme) */
+.form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.form .full{grid-column:1 / -1}
+
+.input, .textarea, .select{
+  width:100%;
+  background:linear-gradient(180deg,#191915,var(--panel));
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px 12px;
+  color:var(--text);
+  font-size:14px;
+  outline:none;
+}
+.textarea{min-height:120px; resize:vertical}
+
+.input:focus, .textarea:focus, .select:focus{
+  border-color: rgba(111,95,74,0.7);
+}
+
+.submit{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:10px;
+  font-weight:600;
+  font-size:14px;
+  border:1px solid var(--accent);
+  background:var(--accent);
+  color:#f5f3ef;
+  cursor:pointer;
+}
+
+@media(max-width:900px){
+  .form{grid-template-columns:1fr}
+}
+
 
 </style>
 
@@ -217,6 +260,7 @@ footer{
     <a href="#services" data-page="services">Services</a>
     <a href="#pricing" data-page="pricing">Pricing</a>
     <a href="#contact" data-page="contact">Contact</a>
+    <a href="#request" data-page="request">Request</a>
   </nav>
 </header>
 
@@ -258,30 +302,33 @@ footer{
 <!-- PRICING -->
 <section id="pricing" class="page">
   <div class="label">Pricing & Offer</div>
-  <div class="grid">
-    <div class="card">
-      <span class="badge">Risk-Free Introductory Offer</span>
-      <p class="strike">Original price: SGD 400</p>
-      <p class="price">Now: SGD 200</p>
-      <p><b>1-minute promo video</b></p>
-      <p>• Filming • Editing • Colour • Music • Web & social ready</p>
-      <p style="color:var(--muted);font-size:13px">
-        If you don’t like the final video, you don’t pay.
-      </p>
-    </div>
+<div class="grid">
 
-    <div class="card">
-      <b>Social Cutdowns</b>
-      <p class="price">Custom quote</p>
-      <p>Short-form edits optimised for ads and platforms.</p>
-    </div>
+  <a class="card card-link" href="#request?package=1-minute%20Promo%20Video%20(SGD%20200)">
+    <span class="badge">Risk-Free Introductory Offer</span>
+    <p class="strike">Original price: SGD 400</p>
+    <p class="price">Now: SGD 200</p>
+    <p><b>1-minute promo video</b></p>
+    <p>• Filming • Editing • Colour • Music • Web & social ready</p>
+    <p style="color:var(--muted);font-size:13px">
+      If you don’t like the final video, you don’t pay.
+    </p>
+  </a>
 
-    <div class="card">
-      <b>Custom Projects</b>
-      <p class="price">On request</p>
-      <p>Campaigns, longer-form, or multi-day shoots.</p>
-    </div>
-  </div>
+  <a class="card card-link" href="#request?package=Social%20Cutdowns">
+    <b>Social Cutdowns</b>
+    <p class="price">Custom quote</p>
+    <p>Short-form edits optimised for ads and platforms.</p>
+  </a>
+
+  <a class="card card-link" href="#request?package=Custom%20Projects">
+    <b>Custom Projects</b>
+    <p class="price">On request</p>
+    <p>Campaigns, longer-form, or multi-day shoots.</p>
+  </a>
+
+</div>
+
 </section>
 
 <!-- CONTACT -->
@@ -292,6 +339,60 @@ footer{
     <p><b>WhatsApp:</b> <a href="https://wa.me/447376357850" target="_blank">+44 7376 357850</a></p>
   </div>
 </section>
+<section id="request" class="page">
+  <div class="label">Filming Request</div>
+
+  <div class="card">
+    <!-- RECOMMENDED: Use a form service endpoint. Replace the action URL below with your own. -->
+    <form id="requestForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form">
+        <div>
+          <label class="label" style="margin-bottom:6px;display:block">Name</label>
+          <input class="input" name="name" required>
+        </div>
+
+        <div>
+          <label class="label" style="margin-bottom:6px;display:block">Company</label>
+          <input class="input" name="company" required>
+        </div>
+
+        <div>
+          <label class="label" style="margin-bottom:6px;display:block">Email</label>
+          <input class="input" type="email" name="email" required>
+        </div>
+
+        <div>
+          <label class="label" style="margin-bottom:6px;display:block">Phone / WhatsApp</label>
+          <input class="input" name="phone">
+        </div>
+
+        <div class="full">
+          <label class="label" style="margin-bottom:6px;display:block">Package</label>
+          <select class="select" id="packageSelect" name="package" required>
+            <option value="">Select a package</option>
+            <option>1-minute Promo Video (SGD 200)</option>
+            <option>Social Cutdowns</option>
+            <option>Custom Projects</option>
+          </select>
+        </div>
+
+        <div class="full">
+          <label class="label" style="margin-bottom:6px;display:block">Project details</label>
+          <textarea class="textarea" name="details" placeholder="What do you need filmed, where, and when?" required></textarea>
+        </div>
+
+        <div class="full">
+          <button class="submit" type="submit">Submit request</button>
+        </div>
+      </div>
+    </form>
+
+    <p style="color:var(--muted);font-size:13px;margin-top:14px">
+      Submissions go to ANF Visuals. If you haven’t set up the form endpoint yet, replace the form action URL.
+    </p>
+  </div>
+</section>
+
 
 <footer>
   <span>© ANF Visuals</span>
@@ -305,19 +406,56 @@ const pages = document.querySelectorAll(".page");
 const links = document.querySelectorAll("nav a");
 
 function showPage(id){
+  const el = document.getElementById(id);
+  if(!el) id = "home";
+
   pages.forEach(p => p.classList.remove("active"));
   links.forEach(l => l.classList.remove("active"));
+
   document.getElementById(id).classList.add("active");
-  document.querySelector(`nav a[data-page="${id}"]`).classList.add("active");
+  const nav = document.querySelector(`nav a[data-page="${id}"]`);
+  if(nav) nav.classList.add("active");
 }
 
-window.addEventListener("hashchange", () => {
-  const page = location.hash.replace("#","") || "home";
-  showPage(page);
-});
+function parseHash(){
+  const raw = (location.hash || "#home").slice(1); // remove #
+  const [page, query] = raw.split("?");
+  const params = new URLSearchParams(query || "");
+  return { page: page || "home", params };
+}
 
-showPage(location.hash.replace("#","") || "home");
+function applyRequestPrefill(params){
+  const pkg = params.get("package");
+  if(!pkg) return;
+
+  const select = document.getElementById("packageSelect");
+  if(!select) return;
+
+  for(const opt of select.options){
+    if(opt.text === pkg){
+      select.value = opt.value || opt.text;
+      return;
+    }
+  }
+
+  for(const opt of select.options){
+    if(opt.text.toLowerCase().includes(pkg.toLowerCase())){
+      select.value = opt.value || opt.text;
+      return;
+    }
+  }
+}
+
+function route(){
+  const { page, params } = parseHash();
+  showPage(page);
+  if(page === "request") applyRequestPrefill(params);
+}
+
+window.addEventListener("hashchange", route);
+route();
 </script>
+
 
 </body>
 </html>
