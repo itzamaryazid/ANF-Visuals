@@ -151,6 +151,25 @@ footer{
   background-color: #7a6a54; /* slightly lighter old-money brown */
   border-color: #7a6a54;
 }
+/* Pricing card hover animations */
+#pricing .card{
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+#pricing .card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+  border-color: rgba(111,95,74,0.6); /* accent brown */
+}
+
+#pricing .card:active{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.3);
+}
+
 </style>
 
 </head>
