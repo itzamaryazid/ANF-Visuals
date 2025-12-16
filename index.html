@@ -1,118 +1,210 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>ANF Visuals — Promo Video Production</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<title>ANF Visuals — Promo Video Production</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    :root{
-      --bg:#0b0c10;
-      --panel:#11131a;
-      --text:#e9ecf1;
-      --muted:#a6adbb;
-      --line:#22263a;
-      --accent:#7aa2ff;
-      --accent2:#4f6dff;
-      --success:#4ade80;
-    }
+<style>
+:root{
+  --bg:#0e0e0c;
+  --panel:#1a1a17;
+  --text:#e6e4df;
+  --muted:#b7b4ad;
+  --line:#2a2a25;
+  --accent:#6f5f4a;
+  --accent-soft:#3a3328;
+}
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
-      background:linear-gradient(180deg,#07080b,var(--bg));
-      color:var(--text);
-    }
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Arial,sans-serif;
+  background:linear-gradient(180deg,#0b0b09,var(--bg));
+  color:var(--text);
+}
 
-    a{color:inherit;text-decoration:none}
+a{color:inherit;text-decoration:none}
+.container{max-width:1100px;margin:auto;padding:28px}
 
-    .container{max-width:1100px;margin:auto;padding:28px}
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-bottom:44px;
+}
 
-    header{
-      display:flex;justify-content:space-between;align-items:center;
-      padding-bottom:40px
-    }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
 
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
-    .logo{
-      width:36px;height:36px;border-radius:10px;
-      background:radial-gradient(circle at 30% 30%,var(--accent),#2b2f47)
-    }
+.brand-badge{
+  display:flex;
+  align-items:center;
+  padding:6px 10px;
+  border-radius:14px;
+  background:#f2eee6;
+  border:1px solid rgba(0,0,0,.12);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
 
-    nav a{margin-left:18px;font-size:14px;color:var(--muted)}
+.brand-badge:hover{
+  transform:translateY(-1px);
+  box-shadow:0 10px 22px rgba(0,0,0,.22);
+}
 
-    .hero{
-      display:grid;grid-template-columns:1.2fr .8fr;
-      gap:24px;padding-bottom:60px
-    }
+.brand-badge img{
+  height:34px;
+  width:auto;
+  display:block;
+}
 
-    h1{font-size:46px;line-height:1.05;margin:0 0 16px}
-    .subtitle{color:var(--muted);font-size:16px;line-height:1.6;margin-bottom:24px}
+nav a{
+  margin-left:20px;
+  font-size:14px;
+  color:var(--muted);
+  position:relative;
+  transition:color .18s ease, transform .18s ease;
+}
 
-    .buttons a{
-      display:inline-block;padding:12px 18px;border-radius:12px;
-      font-weight:700;font-size:14px;margin-right:12px;border:1px solid var(--line)
-    }
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:0;
+  height:1px;
+  background:var(--accent);
+  transition:width .22s ease;
+}
 
-    .primary{
-      background:linear-gradient(180deg,var(--accent),var(--accent2));
-      color:#0b0c10;border:none
-    }
+nav a:hover{
+  color:var(--text);
+  transform:translateY(-1px);
+}
+nav a:hover::after{width:100%}
 
-    .whatsapp{
-      background:#1f2937;border-color:#1f2937
-    }
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:28px;
+  padding-bottom:64px;
+}
 
-    .card{
-      background:linear-gradient(180deg,#0f121a,var(--panel));
-      border:1px solid var(--line);
-      border-radius:18px;padding:20px
-    }
+h1{
+  font-size:44px;
+  line-height:1.05;
+  margin:0 0 16px;
+  font-weight:700;
+}
 
-    .label{
-      font-size:12px;text-transform:uppercase;
-      letter-spacing:.16em;color:var(--muted);margin-bottom:10px
-    }
+.subtitle{
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.65;
+  margin-bottom:26px;
+}
 
-    section{margin-bottom:60px}
+.buttons a{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:10px;
+  font-weight:600;
+  font-size:14px;
+  margin-right:12px;
+  border:1px solid var(--line);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
 
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.buttons a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(0,0,0,.35);
+  border-color:rgba(111,95,74,.6);
+}
 
-    .strike{color:var(--muted);text-decoration:line-through}
-    .price{font-size:22px;font-weight:800}
+.primary{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#f5f3ef;
+}
 
-    .badge{
-      display:inline-block;
-      background:rgba(74,222,128,.15);
-      color:var(--success);
-      border:1px solid rgba(74,222,128,.35);
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:700;
-      margin-bottom:10px;
-    }
+/* CARDS */
+.card{
+  background:linear-gradient(180deg,#191915,var(--panel));
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:22px;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
 
-    footer{
-      border-top:1px solid var(--line);
-      padding:30px 0;color:var(--muted);
-      font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap
-    }
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 34px rgba(0,0,0,.38);
+  border-color:rgba(111,95,74,.55);
+}
 
-    @media(max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-      h1{font-size:36px}
-    }
-  </style>
+.label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  color:var(--muted);
+  margin-bottom:12px;
+}
+
+section{margin-bottom:64px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+.strike{text-decoration:line-through;color:var(--muted)}
+.price{font-size:22px;font-weight:700}
+
+.badge{
+  display:inline-block;
+  background:var(--accent-soft);
+  color:#e8e3da;
+  border:1px solid var(--accent);
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+  margin-bottom:12px;
+}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:32px 0;
+  color:var(--muted);
+  font-size:13px;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  h1{font-size:36px}
+}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+</style>
 </head>
 
 <body>
 <div class="container">
 
 <header>
-  <div class="brand"><div class="logo"></div>ANF Visuals</div>
+  <div class="brand">
+    <div class="brand-badge">
+      <img src="logo.png" alt="ANF Visuals logo">
+    </div>
+  </div>
   <nav>
     <a href="#services">Services</a>
     <a href="#pricing">Pricing</a>
@@ -123,40 +215,40 @@
 <section class="hero">
   <div>
     <div class="label">Promo Video Production</div>
-    <h1>Cinematic promo videos for modern brands.</h1>
+    <h1>Cinematic promo videos for established brands.</h1>
     <p class="subtitle">
-      We help existing businesses showcase their brand with clean,
-      cinematic promo videos built for websites, ads, and social platforms.
+      ANF Visuals produces refined, cinematic promotional videos for existing
+      companies — crafted for websites, advertising, and social platforms.
     </p>
     <div class="buttons">
       <a class="primary" href="#pricing">View pricing</a>
-      <a class="whatsapp" href="https://wa.me/447376357850" target="_blank">WhatsApp us</a>
+      <a href="https://wa.me/447376357850" target="_blank">WhatsApp us</a>
     </div>
   </div>
 
   <div class="card">
-    <div class="label">What we do</div>
+    <div class="label">Our approach</div>
     <p><b>End-to-end production</b><br>Concept, filming, editing, delivery.</p>
-    <p><b>Social-ready formats</b><br>Optimised cuts for ads and short-form content.</p>
-    <p><b>Clear timelines</b><br>Professional workflow, no surprises.</p>
+    <p><b>Discreet crews</b><br>Professional, efficient on-site shoots.</p>
+    <p><b>Timeless visuals</b><br>Clean colour, composed frames.</p>
   </div>
 </section>
 
 <section id="services">
   <div class="label">Services</div>
   <div class="grid">
-    <div class="card"><b>Promo Videos</b><br>Brand, product, event videos</div>
+    <div class="card"><b>Promo Videos</b><br>Brand, product, event films</div>
     <div class="card"><b>Corporate / B2B</b><br>Explainers & testimonials</div>
     <div class="card"><b>Social Packages</b><br>Multiple edits per shoot</div>
   </div>
 </section>
 
 <section id="pricing">
-  <div class="label">Pricing & Offers</div>
+  <div class="label">Pricing & Offer</div>
   <div class="grid">
 
     <div class="card">
-      <span class="badge">Risk-Free Offer</span>
+      <span class="badge">Risk-Free Introductory Offer</span>
       <p class="strike">Original price: SGD 400</p>
       <p class="price">Now: SGD 200</p>
       <p><b>1-minute promo video</b></p>
@@ -164,7 +256,7 @@
         • On-site filming<br>
         • Professional edit & colour grading<br>
         • Music & clean titles<br>
-        • Ready for web & social
+        • Web & social ready
       </p>
       <p style="color:var(--muted);font-size:13px">
         If you don’t like the final video, you don’t pay.
@@ -174,19 +266,13 @@
     <div class="card">
       <b>Social Cutdowns</b>
       <p class="price">Custom quote</p>
-      <p>
-        • Short-form edits (Reels / Shorts / Ads)<br>
-        • Multiple formats & aspect ratios
-      </p>
+      <p>Short-form edits optimised for ads and platforms.</p>
     </div>
 
     <div class="card">
       <b>Custom Projects</b>
       <p class="price">On request</p>
-      <p>
-        • Longer videos<br>
-        • Campaigns & multi-day shoots
-      </p>
+      <p>Campaigns, longer-form, or multi-day shoots.</p>
     </div>
 
   </div>
@@ -197,7 +283,7 @@
   <div class="card">
     <p><b>Email:</b> <a href="mailto:anfvisuals.co@gmail.com">anfvisuals.co@gmail.com</a></p>
     <p><b>WhatsApp:</b> <a href="https://wa.me/447376357850" target="_blank">+44 7376 357850</a></p>
-    <p>Send us your project details and timeline, and we’ll respond promptly.</p>
+    <p>Share your project details and timeline and we’ll respond promptly.</p>
   </div>
 </section>
 
