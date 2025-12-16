@@ -27,7 +27,6 @@ body{
 a{color:inherit;text-decoration:none}
 .container{max-width:1100px;margin:auto;padding:28px}
 
-/* HEADER */
 header{
   display:flex;
   justify-content:space-between;
@@ -44,19 +43,16 @@ header{
   border:1px solid rgba(0,0,0,.12);
 }
 
-/* NAV */
 nav a{
   margin-left:20px;
   font-size:14px;
   color:var(--muted);
-  position:relative;
 }
 nav a.active{color:var(--text)}
 
 section.page{display:none}
 section.page.active{display:block}
 
-/* HERO */
 .hero{
   display:grid;
   grid-template-columns:1.2fr .8fr;
@@ -73,6 +69,11 @@ h1{font-size:44px;margin:0 0 16px}
   border-radius:10px;
   border:1px solid var(--line);
   margin-right:12px;
+  transition:.18s ease;
+}
+.buttons a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(0,0,0,.35);
 }
 .primary{
   background:var(--accent);
@@ -80,12 +81,16 @@ h1{font-size:44px;margin:0 0 16px}
   color:#f5f3ef;
 }
 
-/* CARDS */
 .card{
   background:linear-gradient(180deg,#191915,var(--panel));
   border:1px solid var(--line);
   border-radius:16px;
   padding:22px;
+  transition:.22s ease;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 16px 36px rgba(0,0,0,.4);
 }
 
 .label{
@@ -97,6 +102,7 @@ h1{font-size:44px;margin:0 0 16px}
 }
 
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card-link{display:block}
 
 .strike{text-decoration:line-through;color:var(--muted)}
 .price{font-size:22px;font-weight:700}
@@ -112,6 +118,32 @@ h1{font-size:44px;margin:0 0 16px}
   margin-bottom:12px;
 }
 
+.form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.form .full{grid-column:1/-1}
+
+.input,.textarea,.select{
+  width:100%;
+  background:linear-gradient(180deg,#191915,var(--panel));
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px;
+  color:var(--text);
+}
+.textarea{min-height:120px}
+
+.submit{
+  padding:12px 18px;
+  border-radius:10px;
+  border:1px solid var(--accent);
+  background:var(--accent);
+  color:#f5f3ef;
+  cursor:pointer;
+}
+
 footer{
   border-top:1px solid var(--line);
   padding:32px 0;
@@ -119,13 +151,10 @@ footer{
   font-size:13px;
   display:flex;
   justify-content:space-between;
-  flex-wrap:wrap;
 }
 
 @media(max-width:900px){
-  .hero{grid-template-columns:1fr}
-  .grid{grid-template-columns:1fr}
-  h1{font-size:36px}
+  .hero,.grid,.form{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -135,36 +164,10 @@ footer{
 
 <header>
   <div class="brand-badge">
-    <!-- INLINE SVG LOGO (GitHub-safe) -->
-    <svg
-      width="180"
-      height="36"
-      viewBox="0 0 900 180"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="ANF Visuals logo"
-    >
-      <rect x="0" y="0" width="900" height="180" rx="28" fill="#f2eee6"/>
-      <text
-        x="40"
-        y="118"
-        font-size="110"
-        font-weight="800"
-        fill="#1a1a17"
-        style="letter-spacing:6px"
-        font-family="Inter, Arial, sans-serif"
-      >
-        ANF
-      </text>
-      <text
-        x="380"
-        y="118"
-        font-size="92"
-        font-weight="500"
-        fill="#1a1a17"
-        font-family="Georgia, 'Times New Roman', serif"
-      >
-        Visuals
-      </text>
+    <svg width="180" height="36" viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg">
+      <rect width="900" height="180" rx="28" fill="#f2eee6"/>
+      <text x="40" y="118" font-size="110" font-weight="800" fill="#1a1a17">ANF</text>
+      <text x="380" y="118" font-size="92" fill="#1a1a17">Visuals</text>
     </svg>
   </div>
 
@@ -173,10 +176,10 @@ footer{
     <a href="#services" data-page="services">Services</a>
     <a href="#pricing" data-page="pricing">Pricing</a>
     <a href="#contact" data-page="contact">Contact</a>
+    <a href="#request" data-page="request">Request</a>
   </nav>
 </header>
 
-<!-- HOME -->
 <section id="home" class="page active">
   <div class="hero">
     <div>
@@ -201,7 +204,6 @@ footer{
   </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services" class="page">
   <div class="label">Services</div>
   <div class="grid">
@@ -211,41 +213,87 @@ footer{
   </div>
 </section>
 
-<!-- PRICING -->
 <section id="pricing" class="page">
   <div class="label">Pricing & Offer</div>
   <div class="grid">
-    <div class="card">
+    <a class="card card-link" href="#request?package=1-minute%20Promo%20Video%20(SGD%20200)">
       <span class="badge">Risk-Free Introductory Offer</span>
       <p class="strike">Original price: SGD 400</p>
       <p class="price">Now: SGD 200</p>
       <p><b>1-minute promo video</b></p>
-      <p>• Filming • Editing • Colour • Music • Web & social ready</p>
+      <p>
+        • On-site filming<br>
+        • Professional edit & colour grading<br>
+        • Music & clean titles<br>
+        • Web & social ready
+      </p>
       <p style="color:var(--muted);font-size:13px">
         If you don’t like the final video, you don’t pay.
       </p>
-    </div>
+    </a>
 
-    <div class="card">
+    <a class="card card-link" href="#request?package=Social%20Cutdowns">
       <b>Social Cutdowns</b>
       <p class="price">Custom quote</p>
-      <p>Short-form edits optimised for ads and platforms.</p>
-    </div>
+      <p>
+        • Short-form edits (Reels / Shorts / Ads)<br>
+        • Multiple formats & aspect ratios
+      </p>
+    </a>
 
-    <div class="card">
+    <a class="card card-link" href="#request?package=Custom%20Projects">
       <b>Custom Projects</b>
       <p class="price">On request</p>
-      <p>Campaigns, longer-form, or multi-day shoots.</p>
-    </div>
+      <p>
+        • Longer videos<br>
+        • Campaigns & multi-day shoots
+      </p>
+    </a>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="page">
   <div class="label">Contact</div>
   <div class="card">
-    <p><b>Email:</b> <a href="mailto:anfvisuals.co@gmail.com">anfvisuals.co@gmail.com</a></p>
-    <p><b>WhatsApp:</b> <a href="https://wa.me/447376357850" target="_blank">+44 7376 357850</a></p>
+    <p><b>Email:</b> anfvisuals.co@gmail.com</p>
+    <p><b>WhatsApp:</b> +44 7376 357850</p>
+  </div>
+</section>
+
+<section id="request" class="page">
+  <div class="label">Filming Request</div>
+  <div class="card">
+    <form id="requestForm" action="https://formspree.io/f/xrbnvdwy" method="POST">
+      <input type="hidden" name="_subject" value="New filming request — ANF Visuals">
+
+      <div class="form">
+        <input class="input" name="name" placeholder="Name" required>
+        <input class="input" name="company" placeholder="Company" required>
+        <input class="input" type="email" name="email" placeholder="Email" required>
+
+        <select class="select" name="country_code" required>
+          <option value="">Country code</option>
+          <option value="+65">+65 Singapore</option>
+          <option value="+44">+44 UK</option>
+          <option value="+1">+1 USA</option>
+          <option value="+61">+61 Australia</option>
+        </select>
+
+        <input class="input" name="phone_number" placeholder="Phone / WhatsApp" required>
+
+        <select class="select full" id="packageSelect" name="package" required>
+          <option value="">Select package</option>
+          <option>1-minute Promo Video (SGD 200)</option>
+          <option>Social Cutdowns</option>
+          <option>Custom Projects</option>
+        </select>
+
+        <textarea class="textarea full" name="details" placeholder="Project details" required></textarea>
+
+        <button class="submit full" type="submit">Submit request</button>
+        <p id="requestStatus" style="display:none;font-size:13px"></p>
+      </div>
+    </form>
   </div>
 </section>
 
@@ -257,25 +305,113 @@ footer{
 </div>
 
 <script>
-const pages = document.querySelectorAll(".page");
-const links = document.querySelectorAll("nav a");
+document.addEventListener("DOMContentLoaded", () => {
 
-function showPage(id){
-  pages.forEach(p => p.classList.remove("active"));
-  links.forEach(l => l.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  document.querySelector(`nav a[data-page="${id}"]`).classList.add("active");
-}
+  const pages = document.querySelectorAll(".page");
+  const links = document.querySelectorAll("nav a");
 
-window.addEventListener("hashchange", () => {
-  const page = location.hash.replace("#","") || "home";
-  showPage(page);
+  function showPage(id){
+    let el = document.getElementById(id);
+    if(!el){
+      id = "home";
+      el = document.getElementById("home");
+    }
+
+    pages.forEach(p => p.classList.remove("active"));
+    links.forEach(l => l.classList.remove("active"));
+
+    if(el) el.classList.add("active");
+
+    const nav = document.querySelector(`nav a[data-page="${id}"]`);
+    if(nav) nav.classList.add("active");
+  }
+
+  function parseHash(){
+    const raw = (location.hash || "#home").slice(1);
+    const [page, query] = raw.split("?");
+    return { page: page || "home", params: new URLSearchParams(query || "") };
+  }
+
+  function applyRequestPrefill(params){
+    const raw = params.get("package");
+    if(!raw) return;
+
+    const pkg = decodeURIComponent(raw).toLowerCase();
+    const select = document.getElementById("packageSelect");
+    if(!select) return;
+
+    for(const opt of select.options){
+      if(opt.text.toLowerCase().includes(pkg)){
+        select.value = opt.value || opt.text;
+        return;
+      }
+    }
+  }
+
+  function autoDetectCountryCode(){
+    const select = document.querySelector('select[name="country_code"]');
+    if(!select) return;
+
+    const locale = navigator.language || "";
+    const map = { SG:"+65", GB:"+44", US:"+1", AU:"+61" };
+
+    if(locale.includes("-")){
+      const c = locale.split("-")[1].toUpperCase();
+      if(map[c]) select.value = map[c];
+    }
+  }
+
+  function wireRequestForm(){
+    const form = document.getElementById("requestForm");
+    if(!form || form.dataset.wired) return;
+    form.dataset.wired = "1";
+
+    const status = document.getElementById("requestStatus");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if(status){
+        status.style.display = "block";
+        status.textContent = "Submitting…";
+      }
+
+      const data = new FormData(form);
+      data.set("phone_full", `${data.get("country_code")} ${data.get("phone_number")}`.trim());
+
+      try{
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: data,
+          headers: { "Accept": "application/json" }
+        });
+
+        if(res.ok){
+          form.reset();
+          autoDetectCountryCode();
+          if(status) status.textContent = "Request sent successfully.";
+        }else{
+          if(status) status.textContent = "Submission failed.";
+        }
+      }catch{
+        if(status) status.textContent = "Network error.";
+      }
+    });
+  }
+
+  function route(){
+    const { page, params } = parseHash();
+    showPage(page);
+    if(page === "request"){
+      applyRequestPrefill(params);
+      autoDetectCountryCode();
+      wireRequestForm();
+    }
+  }
+
+  window.addEventListener("hashchange", route);
+  route();
 });
-
-showPage(location.hash.replace("#","") || "home");
 </script>
 
 </body>
 </html>
-
-
