@@ -27,18 +27,11 @@ body{
 a{color:inherit;text-decoration:none}
 .container{max-width:1100px;margin:auto;padding:28px}
 
-/* HEADER */
 header{
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding-bottom:44px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:14px;
 }
 
 .brand-badge{
@@ -48,46 +41,22 @@ header{
   border-radius:14px;
   background:#f2eee6;
   border:1px solid rgba(0,0,0,.12);
-  transition:transform .18s ease, box-shadow .18s ease;
 }
 
-.brand-badge:hover{
-  transform:translateY(-1px);
-  box-shadow:0 10px 22px rgba(0,0,0,.22);
-}
-
-.brand-badge img{
-  height:34px;
-  width:auto;
-  display:block;
-}
+.brand-badge img{height:36px}
 
 nav a{
   margin-left:20px;
   font-size:14px;
   color:var(--muted);
   position:relative;
-  transition:color .18s ease, transform .18s ease;
 }
 
-nav a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-8px;
-  width:0;
-  height:1px;
-  background:var(--accent);
-  transition:width .22s ease;
-}
+nav a.active{color:var(--text)}
 
-nav a:hover{
-  color:var(--text);
-  transform:translateY(-1px);
-}
-nav a:hover::after{width:100%}
+section.page{display:none}
+section.page.active{display:block}
 
-/* HERO */
 .hero{
   display:grid;
   grid-template-columns:1.2fr .8fr;
@@ -95,35 +64,15 @@ nav a:hover::after{width:100%}
   padding-bottom:64px;
 }
 
-h1{
-  font-size:44px;
-  line-height:1.05;
-  margin:0 0 16px;
-  font-weight:700;
-}
-
-.subtitle{
-  color:var(--muted);
-  font-size:16px;
-  line-height:1.65;
-  margin-bottom:26px;
-}
+h1{font-size:44px;margin:0 0 16px}
+.subtitle{color:var(--muted);line-height:1.65;margin-bottom:26px}
 
 .buttons a{
   display:inline-block;
   padding:12px 18px;
   border-radius:10px;
-  font-weight:600;
-  font-size:14px;
-  margin-right:12px;
   border:1px solid var(--line);
-  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-
-.buttons a:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 24px rgba(0,0,0,.35);
-  border-color:rgba(111,95,74,.6);
+  margin-right:12px;
 }
 
 .primary{
@@ -132,30 +81,21 @@ h1{
   color:#f5f3ef;
 }
 
-/* CARDS */
 .card{
   background:linear-gradient(180deg,#191915,var(--panel));
   border:1px solid var(--line);
   border-radius:16px;
   padding:22px;
-  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-}
-
-.card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 14px 34px rgba(0,0,0,.38);
-  border-color:rgba(111,95,74,.55);
 }
 
 .label{
   font-size:12px;
-  text-transform:uppercase;
   letter-spacing:.18em;
+  text-transform:uppercase;
   color:var(--muted);
   margin-bottom:12px;
 }
 
-section{margin-bottom:64px}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 
 .strike{text-decoration:line-through;color:var(--muted)}
@@ -169,7 +109,6 @@ section{margin-bottom:64px}
   padding:6px 12px;
   border-radius:999px;
   font-size:12px;
-  font-weight:600;
   margin-bottom:12px;
 }
 
@@ -188,11 +127,6 @@ footer{
   .grid{grid-template-columns:1fr}
   h1{font-size:36px}
 }
-
-/* Reduced motion */
-@media(prefers-reduced-motion:reduce){
-  *{transition:none!important}
-}
 </style>
 </head>
 
@@ -200,41 +134,43 @@ footer{
 <div class="container">
 
 <header>
-  <div class="brand">
-    <div class="brand-badge">
-      <img src="logo.png" alt="ANF Visuals logo">
-    </div>
+  <div class="brand-badge">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA..." alt="ANF Visuals logo">
   </div>
   <nav>
-    <a href="#services">Services</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#contact">Contact</a>
+    <a href="#home" data-page="home">Home</a>
+    <a href="#services" data-page="services">Services</a>
+    <a href="#pricing" data-page="pricing">Pricing</a>
+    <a href="#contact" data-page="contact">Contact</a>
   </nav>
 </header>
 
-<section class="hero">
-  <div>
-    <div class="label">Promo Video Production</div>
-    <h1>Cinematic promo videos for established brands.</h1>
-    <p class="subtitle">
-      ANF Visuals produces refined, cinematic promotional videos for existing
-      companies — crafted for websites, advertising, and social platforms.
-    </p>
-    <div class="buttons">
-      <a class="primary" href="#pricing">View pricing</a>
-      <a href="https://wa.me/447376357850" target="_blank">WhatsApp us</a>
+<!-- HOME -->
+<section id="home" class="page active">
+  <div class="hero">
+    <div>
+      <div class="label">Promo Video Production</div>
+      <h1>Cinematic promo videos for established brands.</h1>
+      <p class="subtitle">
+        ANF Visuals produces refined, cinematic promotional videos for existing
+        companies — crafted for websites, advertising, and social platforms.
+      </p>
+      <div class="buttons">
+        <a class="primary" href="#pricing">View pricing</a>
+        <a href="https://wa.me/447376357850" target="_blank">WhatsApp us</a>
+      </div>
     </div>
-  </div>
-
-  <div class="card">
-    <div class="label">Our approach</div>
-    <p><b>End-to-end production</b><br>Concept, filming, editing, delivery.</p>
-    <p><b>Discreet crews</b><br>Professional, efficient on-site shoots.</p>
-    <p><b>Timeless visuals</b><br>Clean colour, composed frames.</p>
+    <div class="card">
+      <div class="label">Our approach</div>
+      <p><b>End-to-end production</b><br>Concept, filming, editing, delivery.</p>
+      <p><b>Discreet crews</b><br>Professional, efficient shoots.</p>
+      <p><b>Timeless visuals</b><br>Clean colour, composed frames.</p>
+    </div>
   </div>
 </section>
 
-<section id="services">
+<!-- SERVICES -->
+<section id="services" class="page">
   <div class="label">Services</div>
   <div class="grid">
     <div class="card"><b>Promo Videos</b><br>Brand, product, event films</div>
@@ -243,47 +179,29 @@ footer{
   </div>
 </section>
 
-<section id="pricing">
+<!-- PRICING -->
+<section id="pricing" class="page">
   <div class="label">Pricing & Offer</div>
   <div class="grid">
-
     <div class="card">
       <span class="badge">Risk-Free Introductory Offer</span>
       <p class="strike">Original price: SGD 400</p>
       <p class="price">Now: SGD 200</p>
       <p><b>1-minute promo video</b></p>
-      <p>
-        • On-site filming<br>
-        • Professional edit & colour grading<br>
-        • Music & clean titles<br>
-        • Web & social ready
-      </p>
+      <p>• Filming • Editing • Colour • Music • Web & social ready</p>
       <p style="color:var(--muted);font-size:13px">
         If you don’t like the final video, you don’t pay.
       </p>
     </div>
-
-    <div class="card">
-      <b>Social Cutdowns</b>
-      <p class="price">Custom quote</p>
-      <p>Short-form edits optimised for ads and platforms.</p>
-    </div>
-
-    <div class="card">
-      <b>Custom Projects</b>
-      <p class="price">On request</p>
-      <p>Campaigns, longer-form, or multi-day shoots.</p>
-    </div>
-
   </div>
 </section>
 
-<section id="contact">
+<!-- CONTACT -->
+<section id="contact" class="page">
   <div class="label">Contact</div>
   <div class="card">
     <p><b>Email:</b> <a href="mailto:anfvisuals.co@gmail.com">anfvisuals.co@gmail.com</a></p>
     <p><b>WhatsApp:</b> <a href="https://wa.me/447376357850" target="_blank">+44 7376 357850</a></p>
-    <p>Share your project details and timeline and we’ll respond promptly.</p>
   </div>
 </section>
 
@@ -293,5 +211,25 @@ footer{
 </footer>
 
 </div>
+
+<script>
+const pages = document.querySelectorAll(".page");
+const links = document.querySelectorAll("nav a");
+
+function showPage(id){
+  pages.forEach(p => p.classList.remove("active"));
+  links.forEach(l => l.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  document.querySelector(`nav a[data-page="${id}"]`).classList.add("active");
+}
+
+window.addEventListener("hashchange", () => {
+  const page = location.hash.replace("#","") || "home";
+  showPage(page);
+});
+
+showPage(location.hash.replace("#","") || "home");
+</script>
+
 </body>
 </html>
