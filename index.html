@@ -512,6 +512,76 @@ function route(){
 
 window.addEventListener("hashchange", route);
 route();
+function autoDetectCountryCode(){
+  const select = document.querySelector('select[name="country_code"]');
+  if(!select) return;
+
+  const locale = navigator.language || navigator.userLanguage || "";
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+
+  const map = {
+    "SG": "+65",
+    "MY": "+60",
+    "TH": "+66",
+    "ID": "+62",
+    "PH": "+63",
+    "VN": "+84",
+    "JP": "+81",
+    "KR": "+82",
+    "CN": "+86",
+    "HK": "+852",
+    "TW": "+886",
+    "IN": "+91",
+
+    "AE": "+971",
+    "SA": "+966",
+    "QA": "+974",
+    "KW": "+965",
+    "BH": "+973",
+    "OM": "+968",
+
+    "GB": "+44",
+    "IE": "+353",
+    "FR": "+33",
+    "DE": "+49",
+    "IT": "+39",
+    "ES": "+34",
+    "NL": "+31",
+    "CH": "+41",
+    "SE": "+46",
+    "NO": "+47",
+    "DK": "+45",
+
+    "US": "+1",
+    "CA": "+1",
+    "MX": "+52",
+    "BR": "+55",
+    "AR": "+54",
+    "CL": "+56",
+
+    "AU": "+61",
+    "NZ": "+64",
+
+    "ZA": "+27",
+    "EG": "+20",
+    "NG": "+234",
+    "KE": "+254"
+  };
+
+  let country = "";
+
+  // Try locale first (e.g. en-SG)
+  if(locale.includes("-")){
+    country = locale.split("-")[1].toUpperCase();
+  }
+
+  // Fallback using timezone
+  if(!country){
+    if(tz.includes("Singapore")) country = "SG";
+    if(tz.includes("London")) country = "GB";
+    if(tz.includes("New_York")) country = "US";
+    if(tz.includes(
+
 </script>
 
 
