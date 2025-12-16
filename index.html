@@ -1,3 +1,7 @@
+Below is the **same full, fixed version** sent again, unchanged in features.
+You can **replace your entire file** with this.
+
+```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,7 +10,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-/* ===== YOUR ORIGINAL CSS (UNCHANGED) ===== */
 :root{
   --bg:#0e0e0c;
   --panel:#1a1a17;
@@ -28,7 +31,6 @@ body{
 a{color:inherit;text-decoration:none}
 .container{max-width:1100px;margin:auto;padding:28px}
 
-/* HEADER */
 header{
   display:flex;
   justify-content:space-between;
@@ -45,7 +47,6 @@ header{
   border:1px solid rgba(0,0,0,.12);
 }
 
-/* NAV */
 nav a{
   margin-left:20px;
   font-size:14px;
@@ -56,7 +57,6 @@ nav a.active{color:var(--text)}
 section.page{display:none}
 section.page.active{display:block}
 
-/* HERO */
 .hero{
   display:grid;
   grid-template-columns:1.2fr .8fr;
@@ -85,7 +85,6 @@ h1{font-size:44px;margin:0 0 16px}
   color:#f5f3ef;
 }
 
-/* CARDS */
 .card{
   background:linear-gradient(180deg,#191915,var(--panel));
   border:1px solid var(--line);
@@ -109,6 +108,33 @@ h1{font-size:44px;margin:0 0 16px}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .card-link{display:block}
 
+.form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.form .full{grid-column:1/-1}
+
+.input,.textarea,.select{
+  width:100%;
+  background:linear-gradient(180deg,#191915,var(--panel));
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px;
+  color:var(--text);
+}
+
+.textarea{min-height:120px}
+
+.submit{
+  padding:12px 18px;
+  border-radius:10px;
+  border:1px solid var(--accent);
+  background:var(--accent);
+  color:#f5f3ef;
+  cursor:pointer;
+}
+
 footer{
   border-top:1px solid var(--line);
   padding:32px 0;
@@ -119,7 +145,7 @@ footer{
 }
 
 @media(max-width:900px){
-  .hero,.grid{grid-template-columns:1fr}
+  .hero,.grid,.form{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -127,7 +153,6 @@ footer{
 <body>
 <div class="container">
 
-<!-- HEADER -->
 <header>
   <div class="brand-badge">
     <svg width="180" height="36" viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg">
@@ -146,8 +171,80 @@ footer{
   </nav>
 </header>
 
-<!-- PAGES (UNCHANGED HTML STRUCTURE) -->
-<!-- … your Home, Services, Pricing, Contact, Request sections remain exactly the same … -->
+<section id="home" class="page active">
+  <div class="hero">
+    <div>
+      <div class="label">Promo Video Production</div>
+      <h1>Cinematic promo videos for established brands.</h1>
+      <p class="subtitle">ANF Visuals produces refined, cinematic promotional videos.</p>
+      <div class="buttons">
+        <a class="primary" href="#pricing">View pricing</a>
+        <a href="https://wa.me/447376357850" target="_blank">WhatsApp us</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="label">Our approach</div>
+      <p><b>End-to-end production</b></p>
+      <p><b>Discreet crews</b></p>
+      <p><b>Timeless visuals</b></p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="page">
+  <div class="label">Pricing & Offer</div>
+  <div class="grid">
+    <a class="card card-link" href="#request?package=1-minute%20Promo%20Video%20(SGD%20200)">
+      <p class="price">SGD 200</p>
+      <p>1-minute promo video</p>
+    </a>
+    <a class="card card-link" href="#request?package=Social%20Cutdowns">
+      <p class="price">Custom</p>
+      <p>Social cutdowns</p>
+    </a>
+    <a class="card card-link" href="#request?package=Custom%20Projects">
+      <p class="price">On request</p>
+      <p>Custom projects</p>
+    </a>
+  </div>
+</section>
+
+<section id="request" class="page">
+  <div class="label">Filming Request</div>
+  <div class="card">
+    <form id="requestForm" action="https://formspree.io/f/xrbnvdwy" method="POST">
+      <input type="hidden" name="_subject" value="New filming request — ANF Visuals">
+
+      <div class="form">
+        <input class="input" name="name" placeholder="Name" required>
+        <input class="input" name="company" placeholder="Company" required>
+        <input class="input" type="email" name="email" placeholder="Email" required>
+
+        <select class="select" name="country_code" required>
+          <option value="">Country code</option>
+          <option value="+65">+65 Singapore</option>
+          <option value="+44">+44 UK</option>
+          <option value="+1">+1 USA</option>
+          <option value="+61">+61 Australia</option>
+        </select>
+
+        <input class="input" name="phone_number" placeholder="Phone / WhatsApp" required>
+
+        <select class="select full" id="packageSelect" name="package" required>
+          <option value="">Select package</option>
+          <option>1-minute Promo Video (SGD 200)</option>
+          <option>Social Cutdowns</option>
+          <option>Custom Projects</option>
+        </select>
+
+        <textarea class="textarea full" name="details" placeholder="Project details" required></textarea>
+
+        <button class="submit full" type="submit">Submit request</button>
+        <p id="requestStatus" style="display:none;font-size:13px"></p>
+      </div>
+    </form>
+  </div>
+</section>
 
 <footer>
   <span>© ANF Visuals</span>
@@ -156,32 +253,78 @@ footer{
 
 </div>
 
-<!-- ===== FIXED & CONSOLIDATED SCRIPT ===== -->
 <script>
-const pages = document.querySelectorAll(".page");
-const links = document.querySelectorAll("nav a");
+const pages=document.querySelectorAll(".page");
+const links=document.querySelectorAll("nav a");
 
 function showPage(id){
   pages.forEach(p=>p.classList.remove("active"));
   links.forEach(l=>l.classList.remove("active"));
   document.getElementById(id).classList.add("active");
-  const nav=document.querySelector(`nav a[data-page="${id}"]`);
-  if(nav) nav.classList.add("active");
+  const n=document.querySelector(`nav a[data-page="${id}"]`);
+  if(n) n.classList.add("active");
 }
 
 function parseHash(){
-  const raw=(location.hash||"#home").slice(1);
-  const [page,q]=raw.split("?");
-  return {page:page||"home",params:new URLSearchParams(q||"")};
+  const r=(location.hash||"#home").slice(1);
+  const [p,q]=r.split("?");
+  return{page:p||"home",params:new URLSearchParams(q||"")};
 }
 
 function applyRequestPrefill(params){
   const pkg=params.get("package");
-  const select=document.getElementById("packageSelect");
-  if(!pkg||!select) return;
-  [...select.options].forEach(o=>{
-    if(o.text.includes(pkg)) select.value=o.value||o.text;
+  const s=document.getElementById("packageSelect");
+  if(!pkg||!s) return;
+  [...s.options].forEach(o=>{
+    if(o.text.includes(pkg)) s.value=o.text;
   });
 }
 
-function
+function autoDetectCountryCode(){
+  const s=document.querySelector('select[name="country_code"]');
+  if(!s) return;
+  const l=navigator.language||"";
+  const m={SG:"+65",GB:"+44",US:"+1",AU:"+61"};
+  if(l.includes("-")){
+    const c=l.split("-")[1];
+    if(m[c]) s.value=m[c];
+  }
+}
+
+function wireRequestForm(){
+  const f=document.getElementById("requestForm");
+  if(!f||f.dataset.wired) return;
+  f.dataset.wired="1";
+  const st=document.getElementById("requestStatus");
+
+  f.addEventListener("submit",async e=>{
+    e.preventDefault();
+    st.style.display="block";
+    st.textContent="Submitting…";
+
+    const fd=new FormData(f);
+    fd.set("phone_full",`${fd.get("country_code")} ${fd.get("phone_number")}`);
+
+    const r=await fetch(f.action,{method:"POST",body:fd,headers:{Accept:"application/json"}});
+    st.textContent=r.ok?"Request sent successfully.":"Submission failed.";
+    if(r.ok) f.reset();
+  });
+}
+
+function route(){
+  const {page,params}=parseHash();
+  showPage(page);
+  if(page==="request"){
+    applyRequestPrefill(params);
+    autoDetectCountryCode();
+    wireRequestForm();
+  }
+}
+
+window.addEventListener("hashchange",route);
+route();
+</script>
+
+</body>
+</html>
+```
